@@ -12,4 +12,12 @@
       volumes:
         - ~/jenkins:/var/jenkins_home
         - /var/run/docker.sock:/var/run/docker.sock
-  
+    agent:
+      image: jenkins/ssh-agent:jdk11
+      privileged: true
+      user: root
+      container_name: agent
+      expose:
+        - 22
+      environment:
+        - JENKINS_AGENT_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtstWmr69CCq8+jsOSvFwc+sAT06L9OtDBPXPNB0abAJFRPf3tZ3pscPz5UXZM772Dy9t91gy2ywe9yvNjIesDnkRa15aAAHj61faIEJQc3YGa+Ko8/W3oQqbBQZN5wztVQX9S/u5ckXBxgENB0rPXGwrKc1mZPLI4Ugze86NweaM0kyxAxZlEEuz5EJa8MGd86xYaN/2roWkBY6pVS7Heg65GRC4tUzaZ7R6cU3gtqhg9r7EMHjm8OZZI2Dyal/j7rOnyAzcTgVOps+Bcb0JQFlgaO4jRub7LVQC4N9mst/oVQQT0vwV2zv8fV4Tbf8P/4ywyyhd+hkab37Pjft9KzBE1i0U7T7v4qmM+Z4riXIZWf20rnuaNRW1YXhpdLl7nLRSTXb67NbqujPiMe9YInxgfOgr3sVaiakUaWussyV7Ejs0jYJTblnlypP8I0XrW6MUBX0NRtRXCV5j6i3LaOtTGGOdl2i4SpFy/OSaoglW0j4GiNW3+TtA8EH9CtUE= root@964d574c000f
